@@ -1,0 +1,66 @@
+<!--<p>appointment-list works!</p>-->
+
+<!--Use the data binding interpolation syntax double braces-
+<p>{{appointment.id}} </p>
+<p>{{appointment.name}} </p>
+<p>{{appointment.date}} </p>
+<p>{{appointment.time}} </p>
+-->
+
+
+<div class="container">
+  <div class="card mt-3 p-3 bg-light d-flex justify-content-between res"> 
+
+    <div class="row ">
+      <div class="col">
+        <h2 class="text-center text-primary ">Create New Appointment</h2>
+      </div>
+    </div>
+
+    <div class="row mt-3 mb-3 d-flex justify-content-between ">
+      <div class="col-md-6 ">
+        <input [(ngModel)]="newAppointmentTitle" placeholder="Appointment description">
+      </div>
+
+      <div class="col-md-4">
+        <input [(ngModel)]="newAppointmentDate" type="date" placeholder="Appointment date">
+      </div>
+
+      <div class="col-md-2">
+          <button class="btn btn-primary w-100" (click)="addAppointment()">Add</button>
+      </div>
+
+    </div>
+  </div>
+
+  <h2 class="text-center mt-5 text-primary">Appointments</h2>
+  <ul class="list-group mt-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let appointment of appointments; index as i">
+      {{appointment.id}} {{appointment.title}} {{appointment.date | date:'dd.MM.yyyy'}}
+      <button class="btn btn-danger" (click)="deleteAppointment(i)">Delete</button>
+  
+    </li>
+  </ul>
+</div>
+
+
+<!--using two way data binding and EventListener-
+<div>
+  <input [(ngModel)]="newAppointmentTitle" placeholder="Appointment description">
+  <input [(ngModel)]="newAppointmentDate" type="date"  placeholder="Appointment date">
+  <button (click)="addAppointment()" >Add</button>
+</div>
+-->
+
+<!--using *ngFor directive to loop through the appointments array-->
+<!--create a list of items using single data binding to show the value--
+
+<ul> 
+  <li *ngFor="let appointment of appointments; index as i">
+    {{appointment.id}} {{appointment.title}} {{appointment.date | date:'dd.MM.yyyy'}}
+    <button (click)="deleteAppointment(i)" >Delete</button>
+
+  </li>
+</ul>
+
+-->
